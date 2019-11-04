@@ -1,0 +1,48 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script.
+        function getNetwork() {
+          var network = viz._network;
+          console.log(network);
+          network.on('click', function(properties) {
+            var id = properties.nodes;
+            var node = viz._nodes[id];
+            console.log(node);
+            var title = node['title'];
+            if (node['label'] == 'Movie') {
+              title = title.substring(title.indexOf("id:"))
+              var matches = title.match(/(\d+)/);
+              window.open("/movies/" + matches[0], "_top");
+            } else {
+              var matches = title.match(/(\d+)/);
+              window.open("/talents/" + matches[0], "_top");
+            }
+          })
+        }
+        function draw() {
+          var config = {
+            container_id: "viz",
+            server_url: "bolt://localhost:7687",
+            server_user: "neo4j",
+            server_password: "1234",
+            labels: {
+              "Talent": {
+                "caption": "name",
+                "size": "pagerank",
+                "community": "community"
+              }
+            },
+            initial_cypher: "MATCH (n)-[r]->(m) RETURN n,r,m LIMIT 200"
+          };
+          viz = new NeoVis.default(config);
+          viz.registerOnEvent('completed', getNetwork);
+          viz.render();
+          console.log(viz);
+        }
+  body(onload="draw()")
+    block content
+    script(src="https://cdn.neo4jlabs.com/neovis.js/v1.2.1/neovis.js")
+    script(src="http://d3js.org/d3.v3.min.js")

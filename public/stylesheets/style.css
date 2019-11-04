@@ -1,0 +1,15 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#viz {
+  width: 1200px;
+  height: 800px;
+  border: 1px solid lightgray;
+  font: 22pt arial;
+}

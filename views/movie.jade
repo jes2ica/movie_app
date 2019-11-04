@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    block content
+      h1= title
+      img.image(src= 'http://image.tmdb.org/t/p/w185' + poster_path)
+      p Overview: #{overview}
+      p Release date: #{release_date}
+      p Collection: #{collection}
+      p Related titles: Toy Story 2
+      p Efficiency (rating / cost(m)): #{efficiency}

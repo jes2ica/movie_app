@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    block content
+      h2= talent_name
+      if (profile_path)
+        img.image(src='http://image.tmdb.org/t/p/w185' + profile_path)
+      p Top N most important credits: #{movies}
+      p Primary roles(s): #{roles}
+      p Cumulative revenue: #{revenues} M
+      p Cumulative ratings: #{ratings}
+      p List of genres: #{genres}
