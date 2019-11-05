@@ -17,11 +17,10 @@ driver.onCompleted = function () {
 exports.getMovie = function(id, res) {
   var session = driver.session();
   return session.run(
-    'MATCH (m:Movie {id: {id}}) RETURN m.title as title, m.overview as overview, m.release_date as release_date, m.poster_path as poster_path, m.rating as rating, m.budget as budget, m.collection as collection', {id: id})
+    'MATCH (m:Movie {id: {id}}) WITH m.title as title, m.overview as overview, m.release_date as release_date, m.poster_path as poster_path, m.rating as rating, m.budget as budget, m.collection as collection MATCH (n:Movie {collection: collection}) RETURN title, overview, release_date, poster_path, rating, budget, collection, n.title as related_titles', {id: id})
     .then(result => {
       session.close();
       var record = result.records[0];
-      console.log(record.get('title'));
       res.render('movie', {
         m: Movie(record),
       });

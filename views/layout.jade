@@ -35,7 +35,7 @@ html
                 "community": "community"
               }
             },
-            initial_cypher: "MATCH (n)-[r]->(m) RETURN n,r,m"
+            initial_cypher: "MATCH (n)-[r]->(m) RETURN n,r,m LIMIT 300"
           };
           viz = new NeoVis.default(config);
           viz.registerOnEvent('completed', getNetwork);

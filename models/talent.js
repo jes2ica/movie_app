@@ -5,7 +5,7 @@ function Talent(records) {
 
   const n = records.length;
   var ratings = 0, revenues = 0;
-  var roles = new Set(), movies = [], genres = new Set();
+  var roles = new Set(), movies = new Set(), genres = new Set();
   for (var i = 0; i < records.length; i++) {
     var rating = Number.parseFloat(records[i].get('movie')['properties']['rating']);
     ratings += rating;
@@ -25,7 +25,7 @@ function Talent(records) {
   this.ratings = (ratings / n).toPrecision(3);
   this.revenues = (revenue / 1000000).toPrecision(3);
   this.roles = Array.from(roles);
-  this.movies = movies;
+  this.movies = Array.from(movies);
   this.genres = Array.from(genres).sort();;
 };
 

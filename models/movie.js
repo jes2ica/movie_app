@@ -4,6 +4,8 @@ function Movie(record) {
   this.overview = record.get('overview');
   this.release_date = record.get('release_date');
   this.collection = record.get('collection');
+  this.related_titles = record.get('related_titles');
+  if (this.related_titles == this.title) this.related_titles = '';
 
   var rating = Number.parseFloat(record.get('rating'));
   var budget = Number.parseFloat(record.get('budget')) / 1000000;
