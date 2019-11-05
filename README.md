@@ -19,6 +19,12 @@ NodeJS + Express + Neo4J
 - go to localhost:3000
 
 ## Implementation details:
+- Overview:
+ - MVC Pattern:
+  - /models: modify data from db, pass to view.
+  - /views: render the results.
+  - /routes: invoke apis to get the data and show the results.
+  
 - API Design:
   - getMovie(): take a movie id, query the Neo4J db to get movie info as well as related titles.
   - getTalent(): take a talent id, query the Neo4J db. `MATCH credit =(talent {id: {id}})-[r]->(movie) RETURN *`
