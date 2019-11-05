@@ -6,7 +6,7 @@ var Movie = require('../models/movie')
 var Talent = require('../models/talent')
 
 // var driver = neo4j.driver("bolt://" + 'neo4j_db', {});
-var driver = neo4j.driver("bolt://localhost", neo4j.auth.basic("neo4j", "1234"));
+var driver = neo4j.driver("bolt://localhost:7687", neo4j.auth.basic("neo4j", "1234"));
 
 var async = require('async');
 // Register a callback to know if driver creation was successful:

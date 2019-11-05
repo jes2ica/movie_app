@@ -8,8 +8,8 @@ a {
 }
 
 #viz {
-  width: 1200px;
-  height: 800px;
+  width: 100%;
+  height: 1000px;
   border: 1px solid lightgray;
   font: 22pt arial;
 }
